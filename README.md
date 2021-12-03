@@ -1,4 +1,4 @@
-<details><summary>Graph</summary>
+<details><summary>Breadth First Search</summary>
 <p>
 
 # [Clone Graph](https://leetcode.com/problems/clone-graph/)
@@ -76,16 +76,7 @@ class CloneGraph {
     }
 }
 ```
-
-</p>
-</details>
-
-
-
-
-<details><summary>Breadth First Search</summary>
-<p>
-
+    
 # [Minimum Depth Binary Tree](https://leetcode.com/problems/minimum-depth-of-binary-tree/)
 ## (Best Solution) Breadth First Search
 
