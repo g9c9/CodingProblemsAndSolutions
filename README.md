@@ -187,6 +187,43 @@ class MinDepthBinaryTree {
     }
 }
 ```
+                
+# [Average of Levels in Binary Tree](https://leetcode.com/problems/average-of-levels-in-binary-tree/)
+```
+public List<Double> averageOfLevels(TreeNode root) {
+    List<Double> averageLevels = new ArrayList<Double>();
+    // Store each layer of nodes in tree
+    Queue<TreeNode> q = new LinkedList<TreeNode>();
+    // Adding first layer of tree
+    q.offer(root);
 
+    // While there are still layers to compute average
+    while(!q.isEmpty()) {
+        // Find number of nodes in layer so we can process
+        // only those nodes, since we are adding the nodes
+        // children to the queue, changing the size
+        int numNodeLevel = q.size();
+        double sum = 0;
+        // Go through all nodes in layer, add its value to
+        // sum, and add its children to queue if it has
+        // children
+        for(int i = 0; i < numNodeLevel; i++) {
+            TreeNode node = q.poll();
+            sum += node.val;
+            if (node.left != null) {
+                q.offer(node.left);
+            }
+            if (node.right != null) {
+                q.offer(node.right);
+            }
+        }
+        // Compute average by dividing sum with
+        // number of nodes in layer and adding to lust
+        averageLevels.add(sum / numNodeLevel);
+    }
+    return averageLevels;
+}
+```
+                
 </p>
 </details>
