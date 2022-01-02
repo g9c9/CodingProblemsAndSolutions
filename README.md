@@ -1,3 +1,37 @@
+<details>
+<summary>Arrays</summary>
+<p>
+    
+# [Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self/)
+
+```Java
+public int[] productExceptSelf(int[] nums) {
+    int[] output = new int[nums.length];
+    for (int i = 0; i < output.length; i++) {
+        output[i] = 1;
+    }
+
+    // Stores multiplication of values from left of array
+    int product_front = nums[0];
+    // Stores multiplaction of values from right of array
+    int product_back = nums[nums.length - 1];
+    for (int i = 1, j = nums.length - 2; i < nums.length && j >= 0; i++, j--) {
+        // Multiply the output[i] with the product of all left side of output[i]
+        output[i] *= product_front;
+        // Multiply the output[j] with the product of all right side of output[j]
+        output[j] *= product_back;
+        // Update product_front to store product of left side up to pointer i
+        product_front *= nums[i];
+        // Update product_front to store product of right side up to pointer j
+        product_back *= nums[j];
+    }
+
+    return output;
+}
+```
+</p>
+</details>
+
 <details><summary>Breadth First Search</summary>
 <p>
 
