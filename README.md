@@ -1,5 +1,5 @@
 <details>
-<summary>Arrays</summary>
+<summary>Two Pointers</summary>
 <p>
     
 # [Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self/)
@@ -27,6 +27,38 @@ public int[] productExceptSelf(int[] nums) {
     }
 
     return output;
+}
+```
+# [Find the Duplicate Number](https://leetcode.com/problems/find-the-duplicate-number/)
+
+```Java
+public int findDuplicate(int[] nums) {
+    // Initially not set slow and fast to be the same
+    // by moving it one ahead so rest of code executes
+    int slow = nums[nums[0]];
+    int fast = nums[nums[nums[0]]];
+
+    // Keep moving fast and slow accordinly until they
+    // are at same node
+    while(slow != fast) {
+        slow = nums[slow];
+        fast = nums[nums[fast]];
+    }
+
+    // Set slow back to start
+    slow = nums[0];
+
+    // Keep moving fast and slow at both slow speed until
+    // they are at same node
+    while(slow != fast) {
+        slow = nums[slow];
+        fast = nums[fast];
+    }
+
+    // Both fast and node reached the first node of the cycle
+    // which is the repeated node since two nodes point to
+    // it
+    return slow;
 }
 ```
 </p>
