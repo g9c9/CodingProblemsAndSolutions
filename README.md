@@ -64,6 +64,41 @@ public int findDuplicate(int[] nums) {
 </p>
 </details>
 
+<details><summary>Binary Search</summary>
+<p>
+
+# [Find Minimum in Rotated Sorted Array](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/)
+
+```Java
+public int findMin(int[] nums) {        
+    if (nums.length > 1) {
+        // Binary seach to find the pivot, where
+        // m is the index pointer to find the pivot
+        int l = 0;
+        int r = nums.length - 1;
+        int m = (l + r) / 2;
+
+        // while midpoint > left of midpoint
+        // (take into account boundary)
+        while(nums[m] > nums[m-1 < 0 ? nums.length - 1 : m-1]) {
+            // left is midpoint if right is < midpoint
+            if (nums[r] < nums[m])
+                l = m + 1;
+            // right is midpoint if left is < midpoint
+            else
+                r = m - 1;
+            // Calculate new midpoint to be between left and right
+            m = (l + r) / 2;
+        }
+        return nums[m];
+    }
+    return nums[0];
+}
+```
+    
+</p>
+</details>
+
 <details><summary>Breadth First Search</summary>
 <p>
 
