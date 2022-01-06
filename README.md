@@ -293,3 +293,51 @@ public List<Double> averageOfLevels(TreeNode root) {
                 
 </p>
 </details>
+
+                
+<details><summary>Dynamic Programming</summary>
+<p>
+                
+# [Coin Change](https://leetcode.com/problems/coin-change/)
+                
+```Java
+public int coinChange(int[] coins, int amount) {
+    if(amount > 0) {
+        // Memoization by storing minimum number of coins
+        // for each coin amount from 0 to amount
+        int[] memo = new int[amount + 1];
+
+        // Setting the minimum coins of amount of 1 to amount
+        // to be largest value, but memo[0] to have 0 coins as
+        // solution
+        for(int i = 1; i < memo.length; i++) {
+            memo[i] = amount + 1;
+        }
+
+        // Bottom up Dynamic Programming, finding minimum coins
+        // starting from 1 and going to amount
+        for(int a = 1; a <= amount; a++) {
+            // Go through every coin option
+            for(int c = 0; c < coins.length; c++) {
+                // Check if coin is not greater then amount
+                // from amount for loop
+                if(coins[c] <= a) {
+                    // Change solution if new computed solution
+                    // with current coin is smaller
+                    memo[a] = Math.min(memo[a], 1 + memo[a - coins[c]]);
+                }
+            }
+        }
+
+        // If solution to amount did not change return -1
+        // otherwise return solution
+        return memo[amount] <= amount ? memo[amount] : -1;
+    }
+    // If amount is 0, no coins can make 0
+    return 0;
+}
+```
+
+</p>
+</details>
+                
