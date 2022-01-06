@@ -338,6 +338,43 @@ public int coinChange(int[] coins, int amount) {
 }
 ```
 
+# [Target Sum](https://leetcode.com/problems/target-sum/)
+
+```Java
+public int findTargetSumWays(int[] nums, int target) {
+    // Memoization HashMap to store index and associated
+    // sum as a pair and the number of solutions found
+    // for that pair
+    HashMap<Pair<Integer, Integer>, Integer> memo = new HashMap<Pair<Integer, Integer>, Integer>();
+
+    // Call DFS at the beginning
+    return backtrack(0, 0, target, nums, memo);
+}
+
+// DFS with memoization
+private int backtrack(int i, int total, int target, int[] nums, HashMap<Pair<Integer, Integer>, Integer> memo) {
+    // Generate key pair for memo
+    Pair<Integer, Integer> key = new Pair<Integer, Integer>(i, total);
+    // If last index is reached, time to check if sum is
+    // target and return 1 if it is true
+    if (i == nums.length)
+        return total == target ? 1 : 0;
+    // If the key pair exists, that's means it's already
+    // been solved, return the solutions at the key from memo
+    else if (memo.containsKey(key))
+        return memo.get(key);
+    // Solve the numSol for key pair, accounting for adding
+    // and subtracting num
+    // Insert key pair and solution into memo
+    // Return solution
+    else {
+        int numSol =  backtrack(i + 1, total + nums[i], target, nums, memo) + backtrack(i + 1, total - nums[i], target, nums, memo);
+        memo.put(key, numSol);
+        return numSol;
+    }            
+}
+```
+
 </p>
 </details>
                 
