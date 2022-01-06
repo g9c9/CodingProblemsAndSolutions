@@ -406,6 +406,47 @@ public int rob(int[] nums) {
 }
 ```
 
+# [Maximum Product Subarray](https://leetcode.com/problems/maximum-product-subarray/)
+
+```Java
+public int maxProduct(int[] nums) {
+    // Stores largest product
+    int result = nums[0];
+
+    // Stores largest product as we move
+    // from left to right of array
+    int curMax = 1;
+    // Stores smallest product as we move
+    // from left to right of array
+    // This is used to deal with negative
+    // numbers multiplied by another negative
+    // which can create a possible new curMax
+    int curMin = 1;
+
+    // Go through each index in array
+    for(int i = 0; i < nums.length; i++) {
+        // If zero is encountered, reset and ignore
+        // the zero, result still contains latest curMax
+        if(nums[i] == 0) {
+            curMax = 1;
+            curMin = 1;
+        }
+
+        // Stores old curMax plus extra calculation
+        // used for calculating curMax and curMin
+        int temp = curMax * nums[i];
+        // Three largest possible values could now become new curMax
+        curMax = Math.max(Math.max(temp, curMin * nums[i]), nums[i]);
+        // Three smallest possible values could now become new curMin
+        curMin = Math.min(Math.min(temp, curMin * nums[i]), nums[i]);
+        // Update result
+        result = Math.max(result, curMax);
+    }
+
+    return result;
+}
+```
+
 </p>
 </details>
                 
