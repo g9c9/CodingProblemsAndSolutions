@@ -375,6 +375,37 @@ private int backtrack(int i, int total, int target, int[] nums, HashMap<Pair<Int
 }
 ```
 
+# [House Robber](https://leetcode.com/problems/house-robber/)
+
+```Java
+public int rob(int[] nums) {
+    // Maximum money solution at index -1
+    // stores the money solution for two
+    // indices before the target index
+    int left = 0;
+    // Maximum money solution at index 0
+    // Stores money solution one index before
+    // target index
+    int right = nums[0];
+
+    // Bottom Up Dynamic Programming of solving
+    // max money from left of array and working up
+    for(int i = 1; i < nums.length; i++) {
+        // Calculate max money for target index
+        // This enforces the rule of not picking adjacent
+        // houses
+        int maxMoney = Math.max(right, left + nums[i]);
+        // Update solutions because next target index don't
+        // need left but needs maxMoney
+        left = right;
+        right = maxMoney;
+    }
+
+    // Contains the final solution for entire houses
+    return right;
+}
+```
+
 </p>
 </details>
                 
