@@ -38,6 +38,34 @@ public int missingNumber(int[] nums) {
 }
 ```
 
+# [Find All Numbers Disappeared in an Array](https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/)
+
+```Java
+public List<Integer> findDisappearedNumbers(int[] nums) {
+    List<Integer> result = new ArrayList<Integer>();
+
+    // Go through nums and convert number into an index
+    // and set that index to -1
+    for(int i = 0; i < nums.length; i++) {
+        // Deal with duplicate numbers and if a number
+        // has been marked negative
+        if(nums[Math.abs(nums[i]) - 1] > 0)
+            nums[Math.abs(nums[i]) - 1] *= -1;
+    }
+
+    // Go through nums, looking for positive numbers,
+    // take it's index and convert it into a num,
+    // add it to the result list
+    for(int i = 0; i < nums.length; i++) {
+        if(nums[i] > 0)
+            result.add(i + 1);
+    }
+
+    //Return list
+    return result;
+}
+```
+
 </p>
 </details>
 
