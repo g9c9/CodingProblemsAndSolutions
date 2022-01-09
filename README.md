@@ -16,6 +16,28 @@ public boolean containsDuplicate(int[] nums) {
 }
 ```
 
+# [Missing Number](https://leetcode.com/problems/missing-number/)
+
+```Java
+public int missingNumber(int[] nums) {
+    // A number that stores sum if all numbers existed
+    int sum = 0;
+
+    // Create the sum
+    for(int i = 0; i < nums.length; i++) {
+        sum += i;
+
+        // Loop through nums and subtract each found number
+        // from sum
+        sum -= nums[i];
+    }
+    sum += nums.length;
+
+    // Final remaining number is the missing number
+    return sum;
+}
+```
+
 </p>
 </details>
 
