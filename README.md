@@ -66,6 +66,23 @@ public List<Integer> findDisappearedNumbers(int[] nums) {
 }
 ```
 
+# [Single Number](https://leetcode.com/problems/single-number/)
+    
+```Java
+public int singleNumber(int[] nums) {        
+    // Use Ex-Or bit operation to ex-or all
+    // numbers in array together, which will
+    // cancel the duplicates and leave the
+    // single number
+
+    int result = nums[0];
+    for(int i = 1; i < nums.length; i++) {
+        result ^= nums[i];
+    }
+    return result;
+}
+```
+
 </p>
 </details>
 
