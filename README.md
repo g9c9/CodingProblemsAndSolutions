@@ -608,6 +608,35 @@ public int maxProduct(int[] nums) {
 }
 ```
 
+# [Climbing Stairs](https://leetcode.com/problems/climbing-stairs/)
+                
+```Java
+public int climbStairs(int n) {
+    // Bottom Up Dyanmic programming
+    // Working from n-1 step down to first step
+
+    // How many possibilities to reach final step
+    // from two steps away
+    int one = 1;
+
+    // How many possibilities to reach final step
+    // from one step away
+    int two = 1;
+
+    // Add up the number of possibilities for one
+    // step and two step stored in one and two
+    // update two contain old value of one
+    // one contains the furthest away solution
+    for(int i = 0; i < n - 1; i++) {
+        int temp = one;
+        one += two;
+        two = temp;
+    }
+
+    return one;
+}
+```
+
 </p>
 </details>
                 
