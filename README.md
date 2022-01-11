@@ -118,6 +118,27 @@ public int maxProfit(int[] prices) {
 }
 ```
 
+# [Maximum Subarray](https://leetcode.com/problems/maximum-subarray/)
+                
+```Java
+public int maxSubArray(int[] nums) {
+    int maxSub = nums[0];
+    int curSum = 0;
+
+    for(int n : nums) {
+        // If sum becomes zero, reset curSum
+        if(curSum < 0)
+            curSum = 0;
+        // Add current number to sum
+        curSum += n;
+        // Update maxSubarraysum with largest sum
+        maxSub = Math.max(maxSub, curSum);
+    }
+
+    return maxSub;
+}
+```
+
 </p>
 </details>
 
