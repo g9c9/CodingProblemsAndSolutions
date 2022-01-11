@@ -637,6 +637,34 @@ public int climbStairs(int n) {
 }
 ```
 
+# [Best Time to Buy and Sell Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)
+                
+```Java
+public int maxProfit(int[] prices) {
+    // profit = 0
+    int profit = 0;
+    // buying = first price
+    int buying = prices[0];
+
+    // Loop through prices from 1 to end
+    for(int i = 1; i < prices.length; i++) {
+        // If current price is less or equal to buying
+        if(prices[i] <= buying) {
+            // Set buying to current price
+            buying = prices[i];
+        }
+        else {
+            // set profit to be max of profit or 
+            // current price - buying
+            profit = Math.max(profit, prices[i] - buying);
+        }
+    }
+
+    // Return profit
+    return profit;
+}
+```
+
 </p>
 </details>
                 
