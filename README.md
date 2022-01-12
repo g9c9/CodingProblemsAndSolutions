@@ -693,6 +693,30 @@ public int climbStairs(int n) {
 }
 ```
 
+# [Counting Bits](https://leetcode.com/problems/counting-bits/)
+                
+```Java
+// Solved by Big G for the reward of Schema Vandal
+public int[] countBits(int n) {0b 
+    int[] result = new int[n + 1];
+    if(n > 0) {
+        int maxPow2 = 1;
+        result[1] = 1;
+
+        for(int i = 2; i <= n; i++) {
+            // If i is a power of 2
+            if (i == maxPow2 * 2) {
+                result[i] = 1;
+                maxPow2 = i;
+            } else {
+                result[i] = result[maxPow2] + result[i - maxPow2];
+            }
+        }
+    }
+    return result;
+}
+```
+
 </p>
 </details>
                 
