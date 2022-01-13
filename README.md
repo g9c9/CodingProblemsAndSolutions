@@ -143,6 +143,31 @@ public int maxSubArray(int[] nums) {
 </details>
 
 <details>
+<summary>Fast and Slow Pointers</summary>
+<p>
+
+# [Linked List Cycle](https://leetcode.com/problems/linked-list-cycle/)
+                
+```Java
+public boolean hasCycle(ListNode head) {
+    ListNode slow = head;
+    ListNode fast = head;
+
+    while(fast != null && fast.next != null) {
+        slow = slow.next;
+        fast = fast.next.next;
+        if(slow.equals(fast))
+            return true;
+    }
+
+    return false;
+}
+```
+
+</p>
+</details>
+
+<details>
 <summary>Two Pointers</summary>
 <p>
     
