@@ -178,6 +178,43 @@ public ListNode middleNode(ListNode head) {
 }
 ```
 
+# [Palindrome Linked List](https://leetcode.com/problems/palindrome-linked-list/)
+                
+```Java
+public boolean isPalindrome(ListNode head) {
+    ListNode slow = head;
+    ListNode fast = head;
+
+    // Find midpoint of array
+    while(fast != null && fast.next != null) {
+        fast = fast.next.next;
+        slow = slow.next;
+    }
+
+    // Reverse second half of list
+    ListNode prev = null;
+    while(slow != null) {
+        ListNode newNode = slow.next;
+        slow.next = prev;
+        prev = slow;
+        slow = newNode;
+    }
+
+    // Walk from both ends towards center
+    // Checking to see if boht values are the same
+    ListNode left = head;
+    ListNode right = prev;
+    while(right != null) {
+        if(left.val != right.val)
+            return false;
+        left = left.next;
+        right = right.next;
+    }
+
+    return true;
+}
+```
+
 </p>
 </details>
 
